@@ -59,6 +59,8 @@ The following test results are recorded in the current `outputs/` directory. Eac
 | Dense neural network | 100 selected features | **90.40%** | **0.9030** |
 | Time-series 1D CNN | Raw 128 × 9 windows | 83.41% | 0.8307 |
 
+![Model comparison of test accuracy, macro F1, and confusion matrices](outputs/model_comparison.png)
+
 In these saved runs, the dense network achieved the highest accuracy and macro F1. The time-series CNN did not outperform the models using engineered features. This is an observed result for the current architecture and training setup, not a general conclusion that engineered features are always better. Per-class precision, recall, F1, and confusion matrices are saved for further analysis.
 
 ## Requirements
