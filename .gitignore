@@ -1,0 +1,23 @@
+# Local Python environment and interpreter files
+.venv/
+venv/
+env/
+/dataset/
+__pycache__/
+*.py[cod]
+
+# Notebook and test caches
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# TensorFlow and local logs
+logs/
+events.out.tfevents.*
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
