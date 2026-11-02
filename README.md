@@ -59,7 +59,13 @@ The following test results are recorded in the current `outputs/` directory. Eac
 | Dense neural network | 100 selected features | **90.40%** | **0.9030** |
 | Time-series 1D CNN | Raw 128 × 9 windows | 83.41% | 0.8307 |
 
-![Model comparison of test accuracy, macro F1, and confusion matrices](outputs/model_comparison.png)
+![Pearson correlation heat map for the top selected features](outputs/graphtype_pearson_correlation.png)
+
+![Horizontal model score comparison](outputs/graphtype_model_comparison.png)
+
+![Per-activity F1 score comparison](outputs/graphtype_classwise_f1.png)
+
+![Row-normalized confusion matrices for the three models](outputs/graphtype_normalized_confusion_matrices.png)
 
 In these saved runs, the dense network achieved the highest accuracy and macro F1. The time-series CNN did not outperform the models using engineered features. This is an observed result for the current architecture and training setup, not a general conclusion that engineered features are always better. Per-class precision, recall, F1, and confusion matrices are saved for further analysis.
 
@@ -100,13 +106,13 @@ python view_results.py
 
 Or double-click `view_results.bat` on Windows. Use `python view_npz.py` if you want to inspect the arrays in `outputs/selected_features.npz`.
 
-To visualize all three models' test accuracy, macro F1, and labeled confusion matrices in one figure, run:
+To generate all four visualizations (feature correlations, model score comparison, per-activity F1, and normalized confusion matrices), run:
 
 ```powershell
 python visualize_results.py
 ```
 
-The figure is saved to `outputs/model_comparison.png` and shown in a window. Add `--no-show` to save without opening a window.
+The script saves four `graphtype_<name>.png` files in `outputs/` and shows them in windows. Add `--no-show` to save without opening windows. The Pearson heat map uses the 20 highest ANOVA-scoring features from the selected subset by default; change this with `--top-features`.
 
 ## Generated outputs
 
@@ -116,7 +122,7 @@ The figure is saved to `outputs/model_comparison.png` and shown in a window. Add
 | `outputs/random_forest/` | Random Forest metrics and confusion matrix |
 | `outputs/dnn/` | DNN metrics, confusion matrix, and saved Keras model |
 | `outputs/time_series_cnn/` | CNN metrics, confusion matrix, and saved Keras model |
-| `outputs/model_comparison.png` | Combined performance and confusion-matrix visualization |
+| `outputs/graphtype_*.png` | Feature correlation, model comparison, class-wise F1, and normalized confusion-matrix graphics |
 
 Metric files are JSON; confusion matrices are CSV. Re-running scripts overwrites the corresponding outputs.
 
